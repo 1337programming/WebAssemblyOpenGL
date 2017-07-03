@@ -1,5 +1,3 @@
-import { OpenGLDemo } from './opengl-demo';
-
 // Post data to parent thread
 postMessage({foo: 'foo'});
 
@@ -8,7 +6,6 @@ onmessage = (event) => {
 };
 
 function main() {
-  const demo = new OpenGLDemo();
 }
 
 main();
