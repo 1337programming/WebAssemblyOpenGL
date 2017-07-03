@@ -100,6 +100,8 @@ static int check_linked(program) {
   return success;
 }
 
+extern void run();
+
 int main() {
   glfwSetErrorCallback(output_error);
 

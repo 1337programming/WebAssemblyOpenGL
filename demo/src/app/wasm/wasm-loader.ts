@@ -7,9 +7,9 @@ import Instance = WebAssembly.Instance;
 
 export class WasmLoader {
 
-    async loadWasm(wasmImports: WasmImports): Promise<WasmModule> {
+    async loadWasm(wasmImports: WasmImports, path: string = 'assets/main.wasm'): Promise<WasmModule> {
         // 1. Load the wasm file.
-        const wasmFile: Response = await fetch('assets/main.wasm');
+        const wasmFile: Response = await fetch(path);
 
         // 2. Get the Array Buffer
         const buffer: ArrayBuffer = await wasmFile.arrayBuffer();
@@ -22,6 +22,7 @@ export class WasmLoader {
         const wasm: Instance = await WebAssembly.instantiate(mod, imports);
 
         // 4. Return the exports, as the defined WasmCode.
+        console.log(wasm.exports);
         return wasm.exports as WasmModule;
     }
 
@@ -33,10 +34,10 @@ export class WasmLoader {
         imports.env.memoryBase = imports.env.memoryBase || 0;
         imports.env.tableBase = imports.env.tableBase || 0;
         if (!imports.env.memory) {
-            imports.env.memory = new WebAssembly.Memory({ initial: 256 });
+            imports.env.memory = new WebAssembly.Memory({initial: 256});
         }
         if (!imports.env.table) {
-            imports.env.table = new WebAssembly.Table({ initial: 0, element: 'anyfunc' });
+            imports.env.table = new WebAssembly.Table({initial: 0, element: 'anyfunc'});
         }
         return imports;
     }
