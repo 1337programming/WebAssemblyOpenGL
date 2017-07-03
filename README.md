@@ -5,7 +5,7 @@ This is a boilerplate example of how to port over a typical OpenGL project with 
 # Compilation and Serving
 
 - Follow the steps [here](http://webassembly.org/getting-started/developers-guide/) to get ready to comile WebAssembly
-- Clone this directory wherever you want (`git clone "https://github.com/HarryLovesCode/WebAssembly-WebGL-2"`)
+- Clone this directory wherever you want
 - `cd` to the root of the newly cloned directory
 - Use the makefile to either build, clean up, or make a distribution version (build directory only) of the repo
     - Build: `make`
