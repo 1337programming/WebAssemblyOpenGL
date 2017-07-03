@@ -11,4 +11,4 @@ This is a boilerplate example of how to port over a typical OpenGL project with 
     - Build: `make`
     - Clean: `make clean`
     - Build, but remove objects leaving the `build` dir: `make dist`
-- You can then use `python -m SimpleHTTPServer 8080` or `http-server build/` and open your browser to `localhost:8080`.
+- You can then use `python -m SimpleHTTPServer 8080` or `http-server app/` and open your browser to `localhost:8080`.
