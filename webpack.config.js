@@ -33,6 +33,10 @@ module.exports = {
         test: /\.scss$/,
         include: __dirname + '/app',
         loader: ExtractTextPlugin.extract('css-loader!sass-loader')
+      },
+      {
+        test: /\.wasm$/,
+        loaders: ['wasm-loader']
       }
     ]
   },
