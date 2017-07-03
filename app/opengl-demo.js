@@ -1,21 +1,25 @@
-import ModuleWA from './wasm/module.wasm';
+import Module from './wasm/module.js'
 
 export class OpenGLDemo {
 
   module;
 
   constructor() {
+    this.insertCanvas();
     this.loadDemoWasm();
   }
 
+  /**
+   * Insert the canvas with id 'canvas' for GLFW to pick up
+   */
+  insertCanvas() {
+    document.querySelector('#app').insertAdjacentHTML('afterend', '<div id="opengl-demo"><canvas id="canvas"></canvas></div>');
+  }
+
   loadDemoWasm() {
-    this.module = new ModuleWA({
-      'env': {
-        'memoryBase': 0,
-        'tableBase': 0,
-        'memory': new WebAssembly.Memory({initial: 256}),
-        'table': new WebAssembly.Table({initial: 0, element: 'anyfunc'})
-      }
+    this.module = Module({
+      wasmBinaryFile: '/wasm/module.wasm',
+      canvas: document.getElementById('canvas')
     });
   }
 

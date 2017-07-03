@@ -1,6 +1,6 @@
 #include "linmath.h"
 
-#include <emscripten/emscripten.h>
+#include <emscripten.h>
 
 #define GLFW_INCLUDE_ES3
 
@@ -41,10 +41,12 @@ static const char* fragment_shader_text =
     "    o_color = vec4(i_color, 1.0);\n"
     "}\n";
 
+EMSCRIPTEN_KEEPALIVE
 static void output_error(int error, const char* msg) {
   fprintf(stderr, "Error: %s\n", msg);
 }
 
+EMSCRIPTEN_KEEPALIVE
 static void generate_frame() {
   float ratio;
   int width, height;
@@ -65,6 +67,7 @@ static void generate_frame() {
   glfwPollEvents();
 }
 
+EMSCRIPTEN_KEEPALIVE
 static int check_compiled(shader) {
   GLint success = 0;
   glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
@@ -83,6 +86,7 @@ static int check_compiled(shader) {
   return success;
 }
 
+EMSCRIPTEN_KEEPALIVE
 static int check_linked(program) {
   GLint success = 0;
   glGetProgramiv(program, GL_LINK_STATUS, &success);
@@ -100,8 +104,7 @@ static int check_linked(program) {
   return success;
 }
 
-extern void run();
-
+EMSCRIPTEN_KEEPALIVE
 int main() {
   glfwSetErrorCallback(output_error);
 
