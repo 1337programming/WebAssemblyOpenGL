@@ -14,44 +14,47 @@ const entrypoint = process.env.npm_lifecycle_event === 'dev' ?
   'webpack-dev-server/client?http://localhost:8080' :
   './app/index.js';
 
-module.exports = {
-  devtool: 'source-map',
-  entry: entrypoint,
-  output: {
-    path: __dirname + '/dist',
-    filename: 'bundle.js'
-  },
-  module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        include: __dirname + '/app',
-        loader: 'babel-loader',
-        query: {
-          presets: ['es2015', 'stage-0']
+module.exports = function (env) {
+
+  return {
+    devtool: env === 'production' ? false : 'source-map',
+    entry: entrypoint,
+    output: {
+      path: __dirname + '/dist',
+      filename: 'bundle.js'
+    },
+    module: {
+      loaders: [
+        {
+          test: /\.js$/,
+          include: __dirname + '/app',
+          loader: 'babel-loader',
+          query: {
+            presets: ['es2015', 'stage-0']
+          }
+        },
+        {
+          test: /\.scss$/,
+          include: __dirname + '/app',
+          loader: ExtractTextPlugin.extract('css-loader!sass-loader')
+        },
+        {
+          test: /\.wasm$/,
+          loaders: ['wasm-loader']
         }
-      },
-      {
-        test: /\.scss$/,
-        include: __dirname + '/app',
-        loader: ExtractTextPlugin.extract('css-loader!sass-loader')
-      },
-      {
-        test: /\.wasm$/,
-        loaders: ['wasm-loader']
-      }
-    ]
-  },
-  plugins: [
-    HtmlWebpackPluginConfig,
-    ExtractTextPluginConfig,
-    // Need to copy some wasm files as we import the JS file from the emcc MODULARIZE setting
-    new CopyWebpackPlugin([{
-      from: 'build/*.wasm',
-      to: 'wasm/[name].wasm'
-    }])
-  ],
-  node: {
-    fs: 'empty'
+      ]
+    },
+    plugins: [
+      HtmlWebpackPluginConfig,
+      ExtractTextPluginConfig,
+      // Need to copy some wasm files as we import the JS file from the emcc MODULARIZE setting
+      new CopyWebpackPlugin([{
+        from: 'build/*.wasm',
+        to: 'wasm/[name].wasm'
+      }])
+    ],
+    node: {
+      fs: 'empty'
+    }
   }
-};
+}
