@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: __dirname + '/app/index.html',
@@ -14,6 +15,7 @@ const entrypoint = process.env.npm_lifecycle_event === 'dev' ?
   './app/index.js';
 
 module.exports = {
+  devtool: 'source-map',
   entry: entrypoint,
   output: {
     path: __dirname + '/dist',
@@ -40,5 +42,16 @@ module.exports = {
       }
     ]
   },
-  plugins: [HtmlWebpackPluginConfig, ExtractTextPluginConfig]
-}
+  plugins: [
+    HtmlWebpackPluginConfig,
+    ExtractTextPluginConfig,
+    // Need to copy some wasm files as we import the JS file from the emcc MODULARIZE setting
+    new CopyWebpackPlugin([{
+      from: 'app/wasm/*.wasm',
+      to: 'wasm/[name].wasm'
+    }])
+  ],
+  node: {
+    fs: 'empty'
+  }
+};

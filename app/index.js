@@ -1,42 +1,27 @@
-'use strict';
 import './style.scss';
-import Counter from './counter.wasm';
+import { Counter } from './counter';
+import Module from './wasm/engine.js'
 
-// globals
-let COUNTER;
+// Get Worker Thread
+const WorkerThread = require('worker-loader!./worker.js');
 
 function main() {
-  insertCounterGUI();
-  loadCounterWasm();
+  addHeader();
+  const counter = new Counter();
+  const worker = new WorkerThread();
+  let module = Module({wasmBinaryFile: '/wasm/engine.wasm'});
+  handleWorkerThread(worker);
 }
 
-function _count() {
-  if (COUNTER) {
-    document.getElementById('counter').innerHTML = COUNTER.exports._count();
-  }
+function addHeader() {
+  document.querySelector('#app').insertAdjacentHTML('beforebegin', '<h1>WASM Demo</h1>');
 }
 
-function insertCounterGUI() {
-  // Insert Counter & Global method for UI
-  document.querySelector('#app').insertAdjacentHTML('afterbegin', '<button id="count">Click me</button><div>Count: <span id="counter"></span></div>');
-  const count = document.getElementById('count');
-  count.addEventListener('click', _count);
-}
-
-function loadCounterWasm() {
-  const wasmHelloWorld = () => {
-    COUNTER = new Counter({
-      'env': {
-        'memoryBase': 0,
-        'tableBase': 0,
-        'memory': new WebAssembly.Memory({initial: 256}),
-        'table': new WebAssembly.Table({initial: 0, element: 'anyfunc'})
-      }
-    });
-    // console.log("count function result is : " + COUNTER.exports._count());
+function handleWorkerThread(worker) {
+  worker.postMessage({a: 1});
+  worker.onmessage = (event) => {
+    console.log('main:', event);
   };
-  window.onload = wasmHelloWorld;
 }
 
-
-main();
+window.onload = main;
