@@ -1,4 +1,4 @@
-import Module from './wasm/module.js'
+import Module from '../build/module.js'
 
 export class OpenGLDemo {
 

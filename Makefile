@@ -9,10 +9,9 @@ EOPTS = $(addprefix -s $(EMPTY), $(EOPT))	# Add '-s ' to each option
 # Builds necessary files
 build: $(OBJS)
 		mkdir build
-		mkdir app/wasm
-		$(CC) $(FILES) -O3 $(EOPTS) -o app/wasm/module.js -s WASM=1 -Wall -s MODULARIZE=1
-		$(CC) src/c/counter.c -O3 $(EOPTS) -s SIDE_MODULE=1 -s WASM=1 -o app/wasm/counter.wasm
-		emcc src/c/engine.c -O3 -o app/wasm/engine.js -s WASM=1 -Wall -s MODULARIZE=1
+		$(CC) $(FILES) -O3 $(EOPTS) -o build/module.js -s WASM=1 -Wall -s MODULARIZE=1
+		$(CC) src/c/counter.c -O3 $(EOPTS) -s SIDE_MODULE=1 -s WASM=1 -o build/counter.wasm
+		emcc src/c/engine.c -O3 -o build/engine.js -s WASM=1 -Wall -s MODULARIZE=1
 
 # O3 is is a optimization setting
 # WASM=1 means set web assembly to ture
@@ -30,5 +29,4 @@ dist: build
 # Cleans up object files and build directory
 clean:
 		rm -rf build
-		rm -rf app/wasm
 		rm $(OBJS)

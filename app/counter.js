@@ -1,4 +1,4 @@
-import CounterWA from './wasm/counter.wasm';
+import CounterWA from '../build/counter.wasm';
 
 export class Counter {
   counterModule;

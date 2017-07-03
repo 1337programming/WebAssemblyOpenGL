@@ -1,4 +1,4 @@
-import Module from './wasm/engine.js'
+import Module from '../build/engine.js'
 
 export class Engine {
 
