@@ -16,7 +16,7 @@ option(BUILD_CPU_DEMOS OFF)
 option(BUILD_EXTRAS OFF)
 option(BUILD_OPENGL3_DEMOS OFF)
 option(BUILD_UNIT_TESTS OFF)
-add_subdirectory(WebAssemblyDemo/Vendor/bullet3)
+add_subdirectory(WebAssemblyDemo/Vendor/bullet)
 
 if(MSVC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
@@ -29,7 +29,7 @@ endif()
 
 include_directories(WebAssemblyDemo/Headers/
         WebAssemblyDemo/Vendor/assimp/include/
-        WebAssemblyDemo/Vendor/bullet3/src/
+        WebAssemblyDemo/Vendor/bullet/src/
         WebAssemblyDemo/Vendor/glad/include/
         WebAssemblyDemo/Vendor/glfw/include/
         WebAssemblyDemo/Vendor/glm/
