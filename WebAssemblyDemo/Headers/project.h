@@ -1,6 +1,6 @@
 // Preprocessor Directives
-#ifndef OPIE
-#define OPIE
+#ifndef WEBASSEMBLYDEMO
+#define WEBASSEMBLYDEMO
 #pragma once
 
 // System Headers
@@ -21,4 +21,4 @@
 const int mWidth = 1280;
 const int mHeight = 800;
 
-#endif //~ Opie Header
+#endif //~ WebAssemblyDemo Header

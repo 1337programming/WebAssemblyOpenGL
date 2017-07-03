@@ -1,24 +1,24 @@
-[submodule "src/vendor/assimp"]
-    path = src/vendor/assimp
+[submodule "WebAssemblyDemo/Vendor/assimp"]
+    path = WebAssemblyDemo/Vendor/assimp
     url = https://github.com/assimp/assimp.git
     branch = master
-[submodule "src/vendor/glad"]
-    path = src/vendor/glad
+[submodule "WebAssemblyDemo/Vendor/glad"]
+    path = WebAssemblyDemo/Vendor/glad
     url = https://github.com/Dav1dde/glad.git
     branch = c
-[submodule "src/vendor/glfw"]
-    path = src/vendor/glfw
+[submodule "WebAssemblyDemo/Vendor/glfw"]
+    path = WebAssemblyDemo/Vendor/glfw
     url = https://github.com/glfw/glfw.git
     branch = master
-[submodule "src/vendor/glm"]
-    path = src/vendor/glm
+[submodule "WebAssemblyDemo/Vendor/glm"]
+    path = WebAssemblyDemo/Vendor/glm
     url = https://github.com/g-truc/glm.git
     branch = master
-[submodule "src/vendor/stb"]
-    path = src/vendor/stb
+[submodule "WebAssemblyDemo/Vendor/stb"]
+    path = WebAssemblyDemo/Vendor/stb
     url = https://github.com/nothings/stb.git
     branch = master
-[submodule "src/vendor/bullet3"]
-    path = src/vendor/bullet3
+[submodule "WebAssemblyDemo/Vendor/bullet"]
+    path = WebAssemblyDemo/Vendor/bullet
     url = https://github.com/bulletphysics/bullet3.git
     branch = master
