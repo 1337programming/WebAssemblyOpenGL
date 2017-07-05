@@ -1,4 +1,4 @@
-# WebAssembly & OpenGL
+# WebAssembly & OpenGL (WIP)
 
 This is a boilerplate example of how to port over a typical OpenGL project with Emscripten to produce a .wasm file for browsers.
 
