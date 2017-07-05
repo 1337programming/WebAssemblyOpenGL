@@ -49,8 +49,8 @@ module.exports = function (env) {
       ExtractTextPluginConfig,
       // Need to copy some wasm files as we import the JS file from the emcc MODULARIZE setting
       new CopyWebpackPlugin([{
-        from: 'build/*.wasm',
-        to: 'wasm/[name].wasm'
+        from: 'build',
+        to: 'wasm'
       }])
     ],
     node: {

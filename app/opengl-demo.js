@@ -21,6 +21,7 @@ export class OpenGLDemo {
       wasmBinaryFile: '/wasm/module.wasm',
       canvas: document.getElementById('canvas')
     });
+    console.log(this.module);
   }
 
 }
