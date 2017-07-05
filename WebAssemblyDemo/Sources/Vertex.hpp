@@ -2,9 +2,9 @@
 #define WEBASSEMBLYDEMO_VERTEX_H
 
 #include <GLES3/gl3.h>
-#include "Position.h"
-#include "Color.h"
-#include "UV.h"
+#include "Position.hpp"
+#include "Color.hpp"
+#include "UV.hpp"
 
 struct Vertex {
 

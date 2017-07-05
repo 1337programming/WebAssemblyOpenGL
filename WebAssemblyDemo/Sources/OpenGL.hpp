@@ -1,7 +1,7 @@
 #ifndef WEBASSEMBLYDEMO_OPENGL_H
 #define WEBASSEMBLYDEMO_OPENGL_H
 
-#include "Linmath.h"
+#include "Linmath.hpp"
 
 #include <emscripten.h>
 
@@ -11,7 +11,7 @@
 #include <GLES3/gl3.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "Vertex.h"
+#include "Vertex.hpp"
 
 
 class OpenGL {

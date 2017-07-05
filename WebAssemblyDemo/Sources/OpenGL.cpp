@@ -1,4 +1,4 @@
-#include "OpenGL.h"
+#include "OpenGL.hpp"
 
 EMSCRIPTEN_KEEPALIVE
 OpenGL::OpenGL() {
