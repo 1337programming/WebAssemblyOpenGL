@@ -1,3 +1,7 @@
+/**
+ * @deprecated we use .wasm loader now
+ */
+
 export function loadWebAssembly(filename, imports = {}) {
   return fetch(filename)
     .then(response => response.arrayBuffer())

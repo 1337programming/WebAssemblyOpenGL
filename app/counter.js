@@ -1,5 +1,4 @@
 import CounterWA from '../build/counter.wasm';
-import { loadWebAssembly } from './loader';
 
 export class Counter {
   counterModule;
@@ -28,9 +27,6 @@ export class Counter {
         'table': new WebAssembly.Table({initial: 0, element: 'anyfunc'}),
       }
     };
-    loadWebAssembly('wasm/counter.wasm',importObject).then(instance => {
-      console.log(instance);
-    });
     this.counterModule = new CounterWA(importObject);
     console.log('Counter Module', this.counterModule);
   }
