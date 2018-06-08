@@ -18,8 +18,11 @@ export class OpenGLDemo {
 
   loadDemoWasm() {
     this.module = Module({
-      wasmBinaryFile: '/wasm/module.wasm',
-      canvas: document.getElementById('canvas')
+      wasmBinaryFile: 'module.wasm',
+      canvas: document.getElementById('canvas'),
+      locateFile: function(s) {
+        return 'wasm/' + s;
+      }
     });
     console.log(this.module);
   }
